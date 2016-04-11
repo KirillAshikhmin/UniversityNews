@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<adminPages:AdminSendNewpageBase x:Class="UniversityNews.Pages.AdminPages.AdminSendNewPage"
+                                 xmlns="http://xamarin.com/schemas/2014/forms"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                                 xmlns:adminPages="clr-namespace:UniversityNews.Pages.AdminPages;assembly=UniversityNews"
+                                 xmlns:controls="clr-namespace:UniversityNews.Controls;assembly=UniversityNews">
+    <ScrollView>
+        <StackLayout>
+            <StackLayout>
+                <Label HeightRequest="30"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding FilterText}"
+                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding FilterClickCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="FiltersContainer"
+                             AbsoluteLayout.LayoutBounds="1,1,1,1"
+                             AbsoluteLayout.LayoutFlags="All"
+                             BackgroundColor="Blue"
+                             HorizontalOptions="FillAndExpand"
+                             IsVisible="False">
+                    <controls:BindablePicker Title="Факультет"
+                                             ItemsSource="{Binding FacultiesList}"
+                                             SelectedIndex="{Binding FacultyIndex}" />
+                    <controls:BindablePicker Title="Курс"
+                                             ItemsSource="{Binding CoursesList}"
+                                             SelectedIndex="{Binding CourseIndex}" />
+                    <controls:BindablePicker Title="Группа"
+                                             ItemsSource="{Binding GroupsList}"
+                                             SelectedIndex="{Binding GroupIndex}" />
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <controls:IconLabel Text="{Binding IsFullTime}" />
+                        <Label Text="Очная" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <controls:IconLabel Text="{Binding IsDistance}" />
+                        <Label Text="Заочная" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <controls:IconLabel Text="{Binding IsFullTime}" />
+                        <Label Text="Дневоное" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <controls:IconLabel Text="{Binding IsEvening}" />
+                        <Label Text="Вечернее" />
+                    </StackLayout>
+                  </StackLayout>
+                <StackLayout x:Name="MessageContainer"
+                             AbsoluteLayout.LayoutBounds="0,0,1,1"
+                             AbsoluteLayout.LayoutFlags="All"
+                             IsVisible="True"
+                             Padding="16"
+                             Spacing="10">
+                 
+                    <Editor HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <Button Text="Отправить" VerticalOptions="End" />
+                </StackLayout>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ScrollView>
+</adminPages:AdminSendNewpageBase>

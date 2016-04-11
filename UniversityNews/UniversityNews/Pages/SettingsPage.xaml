@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:SettingsPageBase x:Class="UniversityNews.Pages.SettingsPage"
+                        xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:controls="clr-namespace:UniversityNews.Controls;assembly=UniversityNews"
+                        xmlns:pages="clr-namespace:UniversityNews.Pages;assembly=UniversityNews">
+    <ScrollView Padding="16">
+        <StackLayout>
+            <controls:BindablePicker Title="Факультет"
+                                     ItemsSource="{Binding FacultiesList}"
+                                     SelectedIndex="{Binding FacultyIndex}"
+                                     SelectedIndexChanged="Faculty_OnSelectedIndexChanged" />
+            <controls:BindablePicker Title="Курс"
+                                     ItemsSource="{Binding CoursesList}"
+                                     SelectedIndex="{Binding CourseIndex}"
+                                     SelectedIndexChanged="Cource_OnSelectedIndexChanged" />
+            <controls:BindablePicker Title="Группа"
+                                     ItemsSource="{Binding GroupsList}"
+                                     SelectedIndex="{Binding GroupIndex}"
+                                     SelectedIndexChanged="Group_OnSelectedIndexChanged" />
+            <Label Text="Форма обучения" />
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <controls:IconLabel Text="{Binding IsFullTime}" />
+                    <Label Text="Очная" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectFormEducationCommand}" CommandParameter="{x:Static x:Boolean.TrueString}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <controls:IconLabel Text="{Binding IsExtramural}" />
+                    <Label Text="Заочная" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectFormEducationCommand}" CommandParameter="{x:Static x:Boolean.FalseString}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Уровень образования" />
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="16">
+                    <controls:IconLabel Text="{Binding IsBachelor}" />
+                    <Label Text="Бакалавриат" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectLevelOfEducationCommand}" CommandParameter="{x:Static x:Boolean.TrueString}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="16">
+                    <controls:IconLabel Text="{Binding IsMaster}" />
+                    <Label Text="Магистратура" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectLevelOfEducationCommand}" CommandParameter="{x:Static x:Boolean.FalseString}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Получать новости других факультетов" />
+                <Switch IsToggled="{Binding IsSubscribe}" />
+            </StackLayout>
+            <Button Command="{Binding SaveCommand}" Text="Сохранить" />
+            <Label Text="{Binding LoginText}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AdminCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ScrollView>
+</pages:SettingsPageBase>

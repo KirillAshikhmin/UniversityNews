@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<adminPages:AdminLoginPageBase x:Class="UniversityNews.Pages.AdminPages.AdminLoginPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:adminPages="clr-namespace:UniversityNews.Pages.AdminPages;assembly=UniversityNews">
+    <StackLayout>
+        <Entry Placeholder="Логин" Text="{Binding Login}" />
+        <Entry IsPassword="True"
+               Placeholder="Пароль"
+               Text="{Binding Password}" />
+        <Button Command="{Binding LoginCommand}" Text="Войти" />
+    </StackLayout>
+</adminPages:AdminLoginPageBase>

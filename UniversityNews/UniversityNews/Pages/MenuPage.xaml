@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:MenuPageBase x:Class="UniversityNews.Pages.MenuPage"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:UniversityNews;assembly=UniversityNews"
+                    xmlns:pages="clr-namespace:UniversityNews.Pages;assembly=UniversityNews"
+                    Title="Меню">
+    <ScrollView>
+        <StackLayout Padding="16,0,16,16" VerticalOptions="FillAndExpand">
+            <Label HorizontalOptions="FillAndExpand" Text="Главная" />
+            <Label Text="Факультет" />
+            <Label Text="Группа" />
+            <Label IsVisible="{Binding IsVisibleAddNew}" Text="Добавить новость">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectedMenuItemCommand}" CommandParameter="{x:Static local:MenuItemType.SendNew}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Настройки" VerticalOptions="EndAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectedMenuItemCommand}" CommandParameter="{x:Static local:MenuItemType.Settings}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ScrollView>
+</pages:MenuPageBase>

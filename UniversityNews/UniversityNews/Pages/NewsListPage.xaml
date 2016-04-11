@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:NewsListPageBase x:Class="UniversityNews.Pages.NewsListPage"
+                        xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:pages="clr-namespace:UniversityNews.Pages;assembly=UniversityNews"
+                        Title="Новости">
+    <ListView x:Name="ListView"
+              CachingStrategy="RecycleElement"
+              ItemsSource="{Binding NewsList}"
+              SelectedItem="{Binding SelectedNewModel,
+                                     Mode=TwoWay}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     Orientation="Horizontal"
+                                     Padding="16">
+                            <StackLayout>
+                                <Label Text="{Binding Date}" />
+                                <Image Source="{Binding ImageUrl}" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" />
+                                <Label Text="{Binding Details}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ContentView>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</pages:NewsListPageBase>
