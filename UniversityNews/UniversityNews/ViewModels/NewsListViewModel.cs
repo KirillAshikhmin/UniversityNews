@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UniversityNews.DataObjects;
+using UniversityNews.Helpers;
 using UniversityNews.Models;
 using UniversityNews.Pages;
+using UniversityNews.Services;
 using Xamarin.Forms;
 
 namespace UniversityNews.ViewModels
@@ -12,12 +14,13 @@ namespace UniversityNews.ViewModels
         public NewsListViewModel()
         {
             var newList = new List<NewDataObject>()
-            {
-                new NewDataObject(),
-                new NewDataObject(),
-                new NewDataObject(), new NewDataObject(),new NewDataObject(),new NewDataObject()
-            };
-            NewsList = newList.Select(item =>(NewModel)item).ToList();
+                {
+                    new NewDataObject(),
+                    new NewDataObject(),
+                    new NewDataObject(), new NewDataObject(),new NewDataObject(),new NewDataObject()
+                };
+            //NewsHelper.BeginReadXmlStream("192.168.1.2/api/News");
+            NewsList.AddRange(DataLoad.News.Select(item=> (NewModel)item));
         }
 
         private NewModel  _selectedNewModel;

@@ -1,4 +1,5 @@
-﻿using UniversityNews.DataObjects;
+﻿using System.Globalization;
+using UniversityNews.DataObjects;
 using Xamarin.Forms;
 
 namespace UniversityNews.Models
@@ -15,6 +16,7 @@ namespace UniversityNews.Models
 
         public string Date { get; set; }
 
+        public string Owner { get; set; }
 
         public Color ItemColor { get; set; }
 
@@ -22,13 +24,15 @@ namespace UniversityNews.Models
         {
             var newModel = new NewModel
             {
+                Owner = newDataObject.Owner,
                 Id = newDataObject.Id,
-                Date = newDataObject.Date,
+                Date = newDataObject.Date.ToString(new CultureInfo("ru-ru")),
                 Details = newDataObject.Details,
                 ImageUrl = newDataObject.ImageUrl,
-                Title = newDataObject.Title
+                Title = newDataObject.Title,
             };
-            string color = newDataObject.NewType;
+            string color = "All";
+            //string color = newDataObject.NewType;
             switch (color)
             {
                 case "All":

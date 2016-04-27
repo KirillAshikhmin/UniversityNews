@@ -12,18 +12,25 @@ namespace UniversityNews.DataObjects
 
         public string Details { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
-        public string NewType {get; set; }
+        public int NewType {get; set; }
+
+        public string Owner { get; set; }
+
+        public NewDataObject(/*int id, */string title, string imageUrl, string details, DateTime date, int newType, string owner)
+        {
+            //Id = id;
+            Title = title;
+            ImageUrl = imageUrl;
+            Details = details;
+            Date = date;
+            NewType = newType;
+            Owner = owner;
+        }
 
         public NewDataObject()
         {
-            Id = 1;
-            Title = "static Title";
-            ImageUrl = "http://cs.pikabu.ru/images/logo2013.png";
-            Details = "static details";
-            Date = DateTime.Now.ToString("d");
-            NewType = "All";
         }
     }
 }

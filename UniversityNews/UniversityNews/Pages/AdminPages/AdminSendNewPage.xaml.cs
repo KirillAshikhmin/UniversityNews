@@ -9,7 +9,7 @@ namespace UniversityNews.Pages.AdminPages
     {
     }
 
-    public partial class AdminSendNewPage : AdminSendNewpageBase
+    public partial class AdminSendNewPage 
     {
         public AdminSendNewPage()
         {
